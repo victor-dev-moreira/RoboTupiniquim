@@ -1,5 +1,6 @@
 ﻿using System.Xml.Schema;
 
+Console.WriteLine("----------------------");
 Console.WriteLine("Robo Tupiniquin");
 Console.WriteLine("----------------------");
 
@@ -12,56 +13,68 @@ char[] instrucoes = comando.ToCharArray();
 
 int y = 1;
 int x = 2;
-int sentido = 0;
-char sentidoChar = 'N';
+char sentido = 'N';
 
 for (int i = 0; i < instrucoes.Length; i++)
 {
     if (instrucoes[i] == 'M')
     {
-        if (sentido == 0)
+        if (sentido == 'N')
         {
             y++;
         }
-        else if (sentido == 1 || sentido == -3)
+        else if (sentido == 'L')
         {
             x++;
         }
-        else if (sentido == 2 || sentido == -2)
-        {
-            y--;
-        }
-        else if (sentido == 3 || sentido == -1)
+        else if (sentido == 'O')
         {
             x--;
+        }
+        else if (sentido == 'S')
+        {
+            y--;
         }
     }
     else if (instrucoes[i] == 'E')
     {
-        sentido--;
+        if (sentido == 'N')
+        {
+            sentido = 'O';
+        }
+        else if (sentido == 'O')
+        {
+            sentido = 'S';
+        }
+        else if (sentido == 'S')
+        {
+            sentido = 'L';
+        }
+        else if (sentido == 'L')
+        {
+            sentido = 'N';
+        }
     }
     else if (instrucoes[i] == 'D')
     {
-        sentido++;
-    }
-
-    if (sentido == 0)
-    {
-        sentidoChar = 'N';
-    }
-    else if (sentido == 1)
-    {
-        sentidoChar = 'L';
-    }
-    else if (sentido == 2)
-    {
-        sentidoChar = 'S';
-    }
-    else if (sentido == 3)
-    {
-        sentidoChar = 'O';
+        if (sentido == 'N')
+        {
+            sentido = 'L';
+        }
+        else if (sentido == 'L')
+        {
+            sentido = 'S';
+        }
+        else if (sentido == 'S')
+        {
+            sentido = 'O';
+        }
+        else if (sentido == 'O')
+        {
+            sentido = 'N';
+        }
     }
 }
-
-Console.WriteLine($"Posicão é Y:{y} e X:{x} sentido:" + sentidoChar);
+Console.WriteLine("----------------------");
+Console.WriteLine($"Posicão é Y:{y} e X:{x} sentido:" + sentido);
 Console.ReadLine();
