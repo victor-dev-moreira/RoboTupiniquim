@@ -1,5 +1,4 @@
 ﻿using RoboTupiniquim.ConsoleApp.Entidades;
-
 namespace RoboTupiniquim.ConsoleApp;
 
 class Program
@@ -15,7 +14,7 @@ class Program
             string comando = Jogo.PedirComando(y, x, sentido);
             char[] instrucoes = comando.ToCharArray();
 
-            Movimento.Movimentar(instrucoes, sentido, y, x);
+            Movimento.Movimentar(instrucoes, ref sentido, ref y, ref x);
 
             Console.Write("Deseja Prosseguir? (S/N)");
             string? continuar = Console.ReadLine().ToUpper();

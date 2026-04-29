@@ -2,7 +2,7 @@ namespace RoboTupiniquim.ConsoleApp.Entidades;
 
 public class Movimento
 {
-    public static void Movimentar(char[] instrucoes, char sentido, int y, int x)
+    public static void Movimentar(char[] instrucoes, ref char sentido, ref int y, ref int x)
     {
         for (int i = 0; i < instrucoes.Length; i++)
         {
